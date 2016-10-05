@@ -1,0 +1,13 @@
+data/gym_ihm.h.i
+data/FXOS8700CQ.lib.i
+data/gym_watch.h.i
+data/mbed-os.lib.i
+data/.gitignore.i
+data/img/uvision.png.i
+data/gym_ihm.cpp.i
+data/Hexi_OLED_SSD1351.lib.i
+data/gym_menu.cpp.i
+data/gym_menu.h.i
+data/main.cpp.i
+data/README.md.i
+data/Hexi_KW40Z.lib.i
