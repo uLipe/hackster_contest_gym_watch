@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../gym_exercise_counter.cpp \
 ../gym_ihm.cpp \
 ../gym_ihm_input.cpp \
 ../gym_menu.cpp \
@@ -13,6 +14,7 @@ CPP_SRCS += \
 ../main.cpp 
 
 OBJS += \
+./gym_exercise_counter.o \
 ./gym_ihm.o \
 ./gym_ihm_input.o \
 ./gym_menu.o \
@@ -22,6 +24,7 @@ OBJS += \
 ./main.o 
 
 CPP_DEPS += \
+./gym_exercise_counter.d \
 ./gym_ihm.d \
 ./gym_ihm_input.d \
 ./gym_menu.d \

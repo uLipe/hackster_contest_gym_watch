@@ -9103,6 +9103,65 @@ Discarded input sections
  .ARM.attributes
                 0x00000000       0x37 ./FXOS8700CQ/FXOS8700CQ.o
  .debug_frame   0x00000000      0x190 ./FXOS8700CQ/FXOS8700CQ.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .group         0x00000000        0x8 ./gym_exercise_counter.o
+ .text          0x00000000        0x0 ./gym_exercise_counter.o
+ .data          0x00000000        0x0 ./gym_exercise_counter.o
+ .bss           0x00000000        0x0 ./gym_exercise_counter.o
+ .text._ZN4rtos6ThreadC2E10osPrioritymPh
+                0x00000000       0x58 ./gym_exercise_counter.o
+ .text._ZN12gym_exerciseC2Ev
+                0x00000000       0x48 ./gym_exercise_counter.o
+ .text._ZN12gym_exerciseD2Ev
+                0x00000000       0x28 ./gym_exercise_counter.o
+ .text._ZN12gym_exerciseD0Ev
+                0x00000000       0x20 ./gym_exercise_counter.o
+ .text._ZN12gym_exercise18gym_exercise_startEv
+                0x00000000       0x5c ./gym_exercise_counter.o
+ .text._ZN12gym_exercise21gym_exercise_get_menuEv
+                0x00000000       0x24 ./gym_exercise_counter.o
+ .text._ZN12gym_exercise17exercise_callbackEPv
+                0x00000000       0x80 ./gym_exercise_counter.o
+ .text._ZN12gym_exercise17exercise_app_taskEv
+                0x00000000       0x30 ./gym_exercise_counter.o
+ .text._ZN4mbed8CallbackIFvvEEC2EPS1_
+                0x00000000       0x1c ./gym_exercise_counter.o
+ .text._ZN10watch_menu17menu_set_callbackIM12gym_exerciseF14event_defaultsPvEEEvT_
+                0x00000000       0x3c ./gym_exercise_counter.o
+ .text._ZN4rtos6Thread5startI12gym_exerciseMS2_FvvEEE8osStatusPT_T0_
+                0x00000000       0x38 ./gym_exercise_counter.o
+ .text._ZN4mbed8CallbackIFvvEE6attachEPS1_
+                0x00000000       0x34 ./gym_exercise_counter.o
+ .text._ZN4mbed8CallbackIFvvEEC2I12gym_exerciseEEPT_MS5_FvvE
+                0x00000000       0x28 ./gym_exercise_counter.o
+ .text._ZN4mbed8CallbackIFvvEE12_staticthunkEPvS3_
+                0x00000000       0x18 ./gym_exercise_counter.o
+ .text._ZN4mbed8CallbackIFvvEE6attachI12gym_exerciseEEvPT_MS5_FvvE
+                0x00000000       0x34 ./gym_exercise_counter.o
+ .text._ZN4mbed8CallbackIFvvEE12_methodthunkI12gym_exerciseEEvPvS5_
+                0x00000000       0x44 ./gym_exercise_counter.o
+ .rodata._ZTV12gym_exercise
+                0x00000000       0x10 ./gym_exercise_counter.o
+ .rodata._ZL18gym_exercise_image
+                0x00000000      0x400 ./gym_exercise_counter.o
+ .debug_info    0x00000000     0x1f9a ./gym_exercise_counter.o
+ .debug_abbrev  0x00000000      0x517 ./gym_exercise_counter.o
+ .debug_aranges
+                0x00000000       0x98 ./gym_exercise_counter.o
+ .debug_ranges  0x00000000       0x88 ./gym_exercise_counter.o
+ .debug_line    0x00000000      0x5a9 ./gym_exercise_counter.o
+ .debug_str     0x00000000     0x10e6 ./gym_exercise_counter.o
+ .comment       0x00000000       0x71 ./gym_exercise_counter.o
+ .ARM.attributes
+                0x00000000       0x37 ./gym_exercise_counter.o
+ .debug_frame   0x00000000      0x20c ./gym_exercise_counter.o
  .group         0x00000000        0x8 ./gym_ihm.o
  .group         0x00000000        0x8 ./gym_ihm.o
  .group         0x00000000        0x8 ./gym_ihm.o
@@ -10373,6 +10432,7 @@ LOAD ./Hexi_OLED_SSD1351/OpenSans_Font/OpenSans_Font.o
 LOAD ./Hexi_OLED_SSD1351/Hexi_OLED_SSD1351.o
 LOAD ./Hexi_KW40Z/Hexi_KW40Z.o
 LOAD ./FXOS8700CQ/FXOS8700CQ.o
+LOAD ./gym_exercise_counter.o
 LOAD ./gym_ihm.o
 LOAD ./gym_ihm_input.o
 LOAD ./gym_menu.o
