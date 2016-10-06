@@ -14,7 +14,7 @@ hr_app	main_hr_app;
 
 
 
-/* powe supply default state */
+/* power supply default state */
 DigitalOut ldo(PTA29, 0x01);
 DigitalOut sensors(PTB12, 0x00);
 DigitalOut boost_en(PTC13, 0x01);
@@ -27,12 +27,14 @@ int main(void)
 {
     /* Draw the hexiwear logo */
     
+
+
     /* wait a bit */
-    Thread::wait(3000);
+    Thread::wait(2000);
     
     main_hr_app.hr_start();
     main_ihm.watch_ihm_add_menu(main_hr_app.get_hr_menu());
-  //  main_input.ihm_input_start();
+    //main_input.ihm_input_start();
     main_ihm.watch_ihm_start();
 }
 

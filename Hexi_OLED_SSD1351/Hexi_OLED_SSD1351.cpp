@@ -105,7 +105,7 @@ SSD1351::SSD1351(PinName mosiPin,PinName sclkPin,PinName pwrPin, PinName csPin,P
     oled_text_properties.alignParam = OLED_TEXT_ALIGN_CENTER;
     oled_text_properties.background = NULL;
     oled_text_properties.font       = OpenSans_10x15_Regular;
-    oled_text_properties.fontColor  = COLOR_WHITE;
+    oled_text_properties.fontColor  = COLOR_MAGENTA;
     SetTextProperties(&oled_text_properties);
         
     oled_dynamic_area.areaBuffer = NULL;

@@ -31,6 +31,7 @@ void watch_menu::menu_get_image(unsigned char *img, unsigned int *size){
     if(img == NULL || image == NULL) {
         return;
     } else {
+    	/* the new menu image is set */
         img = image;
         *size = image_size;
     }

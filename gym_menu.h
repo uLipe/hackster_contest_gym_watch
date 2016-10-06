@@ -19,7 +19,7 @@ typedef enum  {
  public:
   
     watch_menu();
-    ~watch_menu();
+    virtual ~watch_menu();
     
     void menu_set_image(unsigned char *img, unsigned int size);
     void menu_get_image(unsigned char *img, unsigned int *size);

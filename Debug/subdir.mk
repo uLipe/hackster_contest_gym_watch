@@ -7,6 +7,7 @@ CPP_SRCS += \
 ../gym_ihm.cpp \
 ../gym_ihm_input.cpp \
 ../gym_menu.cpp \
+../gym_pedometer.cpp \
 ../gym_vibrator.cpp \
 ../heart_rate_app.cpp \
 ../main.cpp 
@@ -15,6 +16,7 @@ OBJS += \
 ./gym_ihm.o \
 ./gym_ihm_input.o \
 ./gym_menu.o \
+./gym_pedometer.o \
 ./gym_vibrator.o \
 ./heart_rate_app.o \
 ./main.o 
@@ -23,6 +25,7 @@ CPP_DEPS += \
 ./gym_ihm.d \
 ./gym_ihm_input.d \
 ./gym_menu.d \
+./gym_pedometer.d \
 ./gym_vibrator.d \
 ./heart_rate_app.d \
 ./main.d 
