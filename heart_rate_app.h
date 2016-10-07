@@ -13,9 +13,20 @@
  /* heart rate app class */
  class hr_app {
  public:
+	/**
+	 * @brief constructor / destructor
+	 */
     hr_app();
     virtual ~hr_app();
+
+    /**
+     * @brief starts the hear rate measurement application
+     */
     void hr_start(void);
+
+    /**
+     * @brief gets the current menu entry of heart rate app
+     */
     watch_menu *get_hr_menu();
     
  private:    

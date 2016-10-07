@@ -9156,7 +9156,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x98 ./gym_exercise_counter.o
  .debug_ranges  0x00000000       0x88 ./gym_exercise_counter.o
- .debug_line    0x00000000      0x5a9 ./gym_exercise_counter.o
+ .debug_line    0x00000000      0x5aa ./gym_exercise_counter.o
  .debug_str     0x00000000     0x10e6 ./gym_exercise_counter.o
  .comment       0x00000000       0x71 ./gym_exercise_counter.o
  .ARM.attributes
@@ -9311,7 +9311,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x98 ./gym_pedometer.o
  .debug_ranges  0x00000000       0x88 ./gym_pedometer.o
- .debug_line    0x00000000      0x59b ./gym_pedometer.o
+ .debug_line    0x00000000      0x59c ./gym_pedometer.o
  .debug_str     0x00000000     0x10f8 ./gym_pedometer.o
  .comment       0x00000000       0x71 ./gym_pedometer.o
  .ARM.attributes
@@ -13073,7 +13073,7 @@ m_usb_global
                 0x20030000                __uvisor_sram_end = (ORIGIN (m_data_2) + 0x30000)
 OUTPUT(hackster_contest_gym_watch.elf elf32-littlearm)
 
-.debug_line     0x00000000    0x12f10
+.debug_line     0x00000000    0x12f11
  .debug_line    0x00000000       0xdf ./mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_GCC/HAL_CM4.o
  .debug_line    0x000000df       0xf7 ./mbed-os/rtos/rtx/TARGET_CORTEX_M/HAL_CM.o
  .debug_line    0x000001d6      0x1d7 ./mbed-os/rtos/rtx/TARGET_CORTEX_M/RTX_Conf_CM.o
@@ -13137,8 +13137,8 @@ OUTPUT(hackster_contest_gym_watch.elf elf32-littlearm)
  .debug_line    0x00010bb8      0xb6b ./Hexi_KW40Z/Hexi_KW40Z.o
  .debug_line    0x00011723      0x76d ./gym_ihm.o
  .debug_line    0x00011e90      0x4e5 ./gym_menu.o
- .debug_line    0x00012375      0x646 ./heart_rate_app.o
- .debug_line    0x000129bb      0x555 ./main.o
+ .debug_line    0x00012375      0x647 ./heart_rate_app.o
+ .debug_line    0x000129bc      0x555 ./main.o
 
 .debug_info     0x00000000    0x48e31
  .debug_info    0x00000000       0x77 ./mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_GCC/HAL_CM4.o
