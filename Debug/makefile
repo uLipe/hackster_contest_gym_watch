@@ -77,7 +77,7 @@ all: hackster_contest_gym_watch.elf secondary-outputs
 hackster_contest_gym_watch.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-builtin -Wall  -g -ggdb -T "C:\Users\Bianca Souza\Desktop\hexiwear\hackster_contest_gym_watch\mbed-os\hal\targets\cmsis\TARGET_Freescale\TARGET_MCU_K64F\TOOLCHAIN_GCC_ARM\MK64FN1M0xxx12.ld" -Xlinker --gc-sections -Wl,-Map,"hackster_contest_gym_watch.map" -specs=nosys.specs -o "hackster_contest_gym_watch.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-builtin -Wall  -g -ggdb -T "C:\Users\vntfene\Documents\hexiwear\hackster_contest_gym_watch\mbed-os\hal\targets\cmsis\TARGET_Freescale\TARGET_MCU_K64F\TOOLCHAIN_GCC_ARM\MK64FN1M0xxx12.ld" -Xlinker --gc-sections -Wl,-Map,"hackster_contest_gym_watch.map" -specs=nosys.specs -o "hackster_contest_gym_watch.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

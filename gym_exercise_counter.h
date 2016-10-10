@@ -4,6 +4,7 @@
 #ifndef GYM_EXERCISE_COUNTER_H_
 #define GYM_EXERCISE_COUNTER_H_
 
+#include "gym_ihm.h"
 #include "gym_menu.h"
 #include "gym_watch.h"
 

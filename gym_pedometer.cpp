@@ -9,6 +9,13 @@
 /* image of pedometer application shown in lcd */
 extern const unsigned char pedometer_app_image[];
 extern int pedometer_size;
+extern const unsigned char empty_drawable[];
+extern int empty_size;
+
+extern watch_ihm main_ihm;
+Thread *current_pedo;
+watch_menu *current_pedo_m;
+
 
 
 pedometer_app::pedometer_app() {
@@ -48,35 +55,66 @@ event_defaults pedometer_app::pedometer_callback(int args){
 
 	switch(input) {
 		case EVENT_TOUCH_RI:
-			ret = MENU_GO_TO_CHILD;
+			if(current_pedo_m->state != MENU_IN_APP) {
+				ret = MENU_GO_TO_CHILD;
+			} else {
+				ret = MENU_CAPTURED;
+			}
+
 			break;
 
 		case EVENT_TOUCH_LF:
-			ret = MENU_GO_TO_PARENT;
+			if(current_pedo_m->state != MENU_IN_APP) {
+				ret = MENU_GO_TO_PARENT;
+			} else {
+
+				current_pedo_m->state = MENU_IN_SCREEN;
+				/* suspend application task from run */
+				current_pedo->signal_clr(1);
+				ret = MENU_EXIT;
+			}
 			break;
 
 		case EVENT_TOUCH_DO:
-			pedometer_app_thread->signal_set(1);
-			ret = MENU_CAPTURED;
+			if(current_pedo_m->state != MENU_IN_APP) {
+				current_pedo->signal_set(1);
+				ret = MENU_CAPTURED;
+			}
 			break;
 
 		case EVENT_TOUCH_UP:
-			/* suspend application task from run */
-			pedometer_app_thread->signal_clr(1);
-			ret = MENU_EXIT;
-
+			ret = MENU_CAPTURED;
 			break;
 	}
 	return(ret);
 }
 
 void pedometer_app::pedometer_app_task(void){
+	bool need_draw = true;
+	osEvent event;
+
 	/* sets the image of pedometer */
 	pedometer_menu->menu_set_image((unsigned char *)&pedometer_app_image[0], pedometer_size);
 
 	for(;;) {
 		/* wait for a ihm running request */
 		pedometer_app_thread->signal_wait(1, osWaitForever);
+
+		if(need_draw != false) {
+			/* needs redraw, refresh screen */
+			need_draw = false;
+			main_ihm.DrawScreen(&empty_drawable[0], 0,0,96,96, OLED_TRANSITION_NONE);
+		}
+
+
+
+
+
+		event = pedometer_app_thread->signal_wait(1,0);
+		if(event.value.signals == 0) {
+			/* current app will suspended, so pend a redraw */
+			need_draw = true;
+		}
 
 	}
 }
