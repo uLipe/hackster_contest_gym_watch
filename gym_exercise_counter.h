@@ -34,7 +34,7 @@ private:
     unsigned char *exercise_stk;
     Thread *exercise_app_thread;
     void exercise_app_task(void);
-    event_defaults exercise_callback(void *args);
+    event_defaults exercise_callback(int args);
     watch_menu *exercise_menu;
 };
 

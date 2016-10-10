@@ -13,6 +13,7 @@ watch_menu::watch_menu() {
     image = NULL;
     child = NULL;
     parent = NULL;
+    state = MENU_IN_SCREEN;
 } 
 
 watch_menu::~watch_menu() {
@@ -27,13 +28,12 @@ void watch_menu::menu_set_image(unsigned char *img, unsigned int size){
     }
 }
 
-void watch_menu::menu_get_image(unsigned char *img, unsigned int *size){
-    if(img == NULL || image == NULL) {
-        return;
+unsigned char * watch_menu::menu_get_image(unsigned int *size){
+    if(image == NULL) {
+        return NULL;
     } else {
-    	/* the new menu image is set */
-        img = image;
         *size = image_size;
+        return(image);
     }
 }
 
@@ -66,12 +66,19 @@ watch_menu* watch_menu::menu_get_parent(void){
 watch_menu* watch_menu::menu_get_child(void){
     return(child);
 }
-void watch_menu::menu_set_callback( event_defaults (*func) (void *args)){
+void watch_menu::menu_set_callback( event_defaults (*func) (int args )){
     if(func != NULL) {
         menu_callback = func;
     }   
 }
 
-event_defaults watch_menu::menu_execute_callback(void *args){
-    return(menu_callback != NULL? menu_callback(args) : MENU_CAPTURED); 
+void watch_menu::set_menu_thread(Thread *p){
+	menu_thr = p;
+}
+Thread* watch_menu::get_menu_thread(void) {
+	return(menu_thr);
+}
+
+event_defaults watch_menu::menu_execute_callback(int args){
+    return(menu_callback != NULL? menu_callback(args) : MENU_CAPTURED);
 }

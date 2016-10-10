@@ -33,7 +33,7 @@
     unsigned char *hr_stk;
     Thread *hr_app_thread;
     void hr_app_task(void);
-    event_defaults hr_callback(void *args);
+    event_defaults hr_callback(int args);
     watch_menu *hr_menu;
  };
  

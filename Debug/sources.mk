@@ -44,8 +44,10 @@ mbed-os/features/frameworks/utest \
 mbed-os/features/frameworks/unity/source \
 mbed-os/features/frameworks/greentea-client/source \
 . \
+images \
 Hexi_OLED_SSD1351/OpenSans_Font \
 Hexi_OLED_SSD1351 \
 Hexi_KW40Z \
 FXOS8700CQ \
+.metadata/.plugins/org.eclipse.cdt.make.core \
 

@@ -86,7 +86,7 @@ const init_cmd_t seq[] = {
 SSD1351::SSD1351(PinName mosiPin,PinName sclkPin,PinName pwrPin, PinName csPin,PinName rstPin, PinName dcPin): spi(mosiPin,NC,sclkPin) , power(pwrPin), cs(csPin),rst(rstPin),dc(dcPin) 
 {
 
-    spi.frequency(8000000);
+    spi.frequency(4000000);
 
     
     dc =0;
@@ -105,7 +105,7 @@ SSD1351::SSD1351(PinName mosiPin,PinName sclkPin,PinName pwrPin, PinName csPin,P
     oled_text_properties.alignParam = OLED_TEXT_ALIGN_CENTER;
     oled_text_properties.background = NULL;
     oled_text_properties.font       = OpenSans_10x15_Regular;
-    oled_text_properties.fontColor  = COLOR_MAGENTA;
+    oled_text_properties.fontColor  = COLOR_BLACK;
     SetTextProperties(&oled_text_properties);
         
     oled_dynamic_area.areaBuffer = NULL;
@@ -172,11 +172,12 @@ void SSD1351::SendData ( const uint8_t* dataToSend,
 
   uint16_t* arrayPtr = (uint16_t*)dataToSend;
 
+/*
   for( uint32_t i = 0; i < dataSize/2; i++ )
   {
       arrayPtr[i] &= colorMask;
   }
-  
+  */
 
   SendCmd( OLED_CMD_WRITERAM, CMD_BYTE );
   

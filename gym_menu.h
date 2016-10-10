@@ -6,6 +6,8 @@
 #define __GYM_MENU_H
 
 #include "OLED_types.h"
+#include "mbed.h"
+#include "rtos.h"
  
 /** events returned by the menu callback execution */
 typedef enum  {
@@ -14,6 +16,11 @@ typedef enum  {
     MENU_GO_TO_PARENT,
     MENU_EXIT,
 }event_defaults;
+
+typedef enum {
+	MENU_IN_APP =0,
+	MENU_IN_SCREEN,
+}menu_status_t;
 
 /**
  * @brief menu properties class
@@ -35,7 +42,7 @@ typedef enum  {
     /**
      * @brief gets the image of current menu propertie
      */
-    void menu_get_image(unsigned char *img, unsigned int *size);
+    unsigned char *menu_get_image(unsigned int *size);
 
     /**
      * @brief set the background color
@@ -75,28 +82,38 @@ typedef enum  {
     /**
      * @brief sets the menu event callback
      */
-    void menu_set_callback( event_defaults (*func) (void *args));
+    void menu_set_callback( event_defaults (*func) (int args));
 
     template <typename M>
     void menu_set_callback(M method) {
-    	menu_set_callback((event_defaults (*)(void *))method);
+    	menu_set_callback((event_defaults (*)(int))method);
     }
 
+
+    void set_menu_thread(Thread *p);
+    Thread *get_menu_thread(void);
 
 
     /**
      * @brief force menu callback execution (used with menu ihm)
      */
-    event_defaults menu_execute_callback(void *args);
+    event_defaults menu_execute_callback(int args);
+
+    /**
+     * @brief current menu status
+     */
+    menu_status_t state;
+
     
  private:
     unsigned char *image;
     int image_size;
     Color_t background;
     unsigned int event_mask;
-    event_defaults (*menu_callback) (void *);
+    event_defaults (*menu_callback) (int);
     watch_menu *parent;
     watch_menu *child;
+    Thread *menu_thr;
  };
  
  

@@ -7,11 +7,11 @@
  
  #include "mbed.h"
  #include "rtos.h"
- #include "PwmOut.h"
+ #include "DigitalOut.h"
  #include "Timeout.h"
  
 /* defines the properties of vibrator class */
-class watch_viber : public PwmOut{
+class watch_viber{
 
 public:
 
@@ -36,6 +36,7 @@ private:
     void viber_callback(void);
     bool vibrating;
     Timeout *vib_tout;
+    DigitalOut *out;
 };
 
  

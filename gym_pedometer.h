@@ -33,7 +33,7 @@ private:
     unsigned char *pedometer_stk;
     Thread *pedometer_app_thread;
     void pedometer_app_task(void);
-    event_defaults pedometer_callback(void *args);
+    event_defaults pedometer_callback(int args);
     watch_menu *pedometer_menu;
 
 };

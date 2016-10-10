@@ -24,18 +24,19 @@
  
  
  /* event types */
- #define EVENT_TOUCH                0x80000001
- #define EVENT_SW                   0x80000002
- #define EVENT_HW                   0x80000004
- #define EVENT_HRM                  0x80000008
- #define EVENT_ACC                  0x80000010
+ #define EVENT_TOUCH                0x0000001
+ #define EVENT_SW                   0x0000002
+ #define EVENT_HW                   0x0000004
+ #define EVENT_HRM                  0x0000008
+ #define EVENT_ACC                  0x0000010
  #define EVENT_ALL   (EVENT_TOUCH|EVENT_SW|EVENT_HW|EVENT_HRM|EVENT_ACC)
 
- #define EVENT_TOUCH_UP             0x80000100
- #define EVENT_TOUCH_DO             0x80000200
- #define EVENT_TOUCH_LF             0x80000400
- #define EVENT_TOUCH_RI             0x80000800
- #define EVENT_TOUCH_ALL (EVENT_TOUCH | EVENT_TOUCH_UP | EVENT_TOUCH_DO |    \
+
+ #define EVENT_TOUCH_UP             0x0000100
+ #define EVENT_TOUCH_DO             0x0000200
+ #define EVENT_TOUCH_LF             0x0000400
+ #define EVENT_TOUCH_RI             0x0000800
+ #define EVENT_TOUCH_ALL (EVENT_TOUCH_UP | EVENT_TOUCH_DO |    \
                          EVENT_TOUCH_LF | EVENT_TOUCH_RI)     
 
 

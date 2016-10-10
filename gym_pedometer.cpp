@@ -2,13 +2,14 @@
  * @brief pedometer application class
  */
 
-
 #include "gym_ihm.h"
 #include "gym_pedometer.h"
 
 
 /* image of pedometer application shown in lcd */
-const unsigned char pedometer_app_image[1024] ={0};
+extern const unsigned char pedometer_app_image[];
+extern int pedometer_size;
+
 
 pedometer_app::pedometer_app() {
 	pedometer_stk = new unsigned char[1024];
@@ -23,7 +24,8 @@ void pedometer_app::pedometer_app_start(void) {
 
 	/* creates a menu instance in order to provide user IHM */
 	pedometer_menu = new watch_menu;
-	pedometer_menu->menu_set_callback(&pedometer_app::pedometer_callback);
+	pedometer_menu->menu_set_callback( &pedometer_app::pedometer_callback);
+	pedometer_menu->menu_set_event_mask(EVENT_TOUCH_ALL);
 
 	/* starts the pedometer application task */
 	pedometer_app_thread->start(this, &pedometer_app::pedometer_app_task);
@@ -39,7 +41,7 @@ watch_menu* pedometer_app::get_pedometer_menu(void) {
 }
 
 
-event_defaults pedometer_app::pedometer_callback(void *args){
+event_defaults pedometer_app::pedometer_callback(int args){
 	event_defaults ret = MENU_CAPTURED;
 	int input = (int)args;
 
@@ -70,7 +72,7 @@ event_defaults pedometer_app::pedometer_callback(void *args){
 
 void pedometer_app::pedometer_app_task(void){
 	/* sets the image of pedometer */
-	pedometer_menu->menu_set_image((unsigned char *)&pedometer_app_image[0], sizeof(pedometer_app_image));
+	pedometer_menu->menu_set_image((unsigned char *)&pedometer_app_image[0], pedometer_size);
 
 	for(;;) {
 		/* wait for a ihm running request */

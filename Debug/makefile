@@ -24,10 +24,12 @@ RM := rm -rf
 -include mbed-os/features/frameworks/utest/subdir.mk
 -include mbed-os/features/frameworks/unity/source/subdir.mk
 -include mbed-os/features/frameworks/greentea-client/source/subdir.mk
+-include images/subdir.mk
 -include Hexi_OLED_SSD1351/OpenSans_Font/subdir.mk
 -include Hexi_OLED_SSD1351/subdir.mk
 -include Hexi_KW40Z/subdir.mk
 -include FXOS8700CQ/subdir.mk
+-include .metadata/.plugins/org.eclipse.cdt.make.core/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -75,7 +77,7 @@ all: hackster_contest_gym_watch.elf secondary-outputs
 hackster_contest_gym_watch.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-builtin -Wall  -g -ggdb -T "C:\Users\vntfene\Documents\hexiwear\hackster_contest_gym_watch\mbed-os\hal\targets\cmsis\TARGET_Freescale\TARGET_MCU_K64F\TOOLCHAIN_GCC_ARM\MK64FN1M0xxx12.ld" -Xlinker --gc-sections -Wl,-Map,"hackster_contest_gym_watch.map" -specs=nosys.specs -o "hackster_contest_gym_watch.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-builtin -Wall  -g -ggdb -T "C:\Users\Bianca Souza\Desktop\hexiwear\hackster_contest_gym_watch\mbed-os\hal\targets\cmsis\TARGET_Freescale\TARGET_MCU_K64F\TOOLCHAIN_GCC_ARM\MK64FN1M0xxx12.ld" -Xlinker --gc-sections -Wl,-Map,"hackster_contest_gym_watch.map" -specs=nosys.specs -o "hackster_contest_gym_watch.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

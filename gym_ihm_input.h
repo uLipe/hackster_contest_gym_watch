@@ -14,7 +14,7 @@
 /**
  * @bbrief hw event channel class
  */
-class ihm_input: public Thread, public KW40Z {
+class ihm_input: public KW40Z {
 
 public:
 	/**

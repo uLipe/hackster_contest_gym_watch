@@ -6,7 +6,7 @@
 #include "gym_ihm_input.h"
 
 
-ihm_input *current_input;
+Thread *current_input;
 
 void upkey (void){
     current_input->signal_set(EVENT_TOUCH | EVENT_TOUCH_UP);
@@ -28,10 +28,9 @@ void lfkey (void){
 
 
 ihm_input::ihm_input(PinName tx, PinName rx) : KW40Z(tx, rx)  {
-    ihm_input_stk = new unsigned char [1024];
-    ihm_input_thread = new Thread(osPriorityRealtime, 1024, ihm_input_stk);
+    ihm_input_stk = new unsigned char [4096];
+    ihm_input_thread = new Thread(osPriorityRealtime, 4096, ihm_input_stk);
     ihm_signal = new Semaphore;
-    key_viber = new watch_viber(PTB9);    
 }
 
 
@@ -41,6 +40,8 @@ ihm_input::~ihm_input(){
 }
 
 void ihm_input::ihm_input_start(void){
+
+    key_viber = new watch_viber(PTB9);
     ihm_input_thread->start(this, &ihm_input::input_task);
 }
 
@@ -57,7 +58,7 @@ void ihm_input::attach_thread(Thread* thr){
 void ihm_input::input_task(void){
     osEvent events;
  
-    current_input = this;
+    current_input = ihm_input_thread;
     
     this->attach_buttonUp(upkey);
     this->attach_buttonDown(dokey);
@@ -67,20 +68,25 @@ void ihm_input::input_task(void){
     
     for(;;) {
         /* remove the touch base event and send only the key */
-        events = this->signal_wait(EVENT_TOUCH,osWaitForever);
+        events = ihm_input_thread->signal_wait(0,osWaitForever);
         
-        key_viber->watch_stop_viber();        
+
+        /*key_viber->watch_stop_viber();
         key_viber->watch_start_viber(1);
-        
+        */
         
         
         /* resets the signals waited*/
-        this->signal_clr(events.value.signals);
-        events.value.signals &= ~(EVENT_TOUCH);
-        if(out_channel != NULL) {
-            out_channel->signal_set(events.value.signals);      
+        ihm_input_thread->signal_clr(events.value.signals);;
+
+        /* filter out the TOuch event */
+        if(events.value.signals & EVENT_TOUCH) {
+            events.value.signals &= ~(EVENT_TOUCH);
+            if(out_channel != NULL) {
+                out_channel->signal_set(events.value.signals);
+            }
+
         }
-        
     }  
 }
     

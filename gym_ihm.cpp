@@ -8,6 +8,7 @@
  
 
 
+
   
 watch_ihm::watch_ihm(PinName mosiPin,PinName sclkPin,
                     PinName pwrPin, PinName csPin,PinName rstPin, 
@@ -31,13 +32,16 @@ int watch_ihm::watch_ihm_add_menu(watch_menu *m){
         
         return(0);
     }
- 
+
     while(ptr->menu_get_child() != NULL) {
         /* iterate and finds the last item added */
         ptr = ptr->menu_get_child();
     }
     /* insert this child on the list*/
     ptr->menu_add_child(m);
+    m->menu_add_parent(ptr);
+
+
     return(0);
 }
 
@@ -61,21 +65,26 @@ void watch_ihm::ihm_manager(void) {
     event_defaults menu_ret = MENU_CAPTURED; 
     int mask;
     bool app_drawn = false;  
-    bool menu_drawn = true;  
-      
+    bool menu_drawn = true;
+    unsigned int size = 0;
+    unsigned char *img_ptr = NULL;
+
+
     /* initialize screen parameters */
     this->GetTextProperties(&default_text);
     this->SetTextProperties(&default_text);    
     this->DimScreenOFF();       
-    this->FillScreen(COLOR_MAGENTA);
+
+    /* take the initial menu and show it */
+    img_ptr = current_menu->menu_get_image(&size);
+    this->DrawScreen(img_ptr, 0,0, 96,96,OLED_TRANSITION_NONE);
+
 
     for(;;) {
-        unsigned int size = 0;
-        unsigned char *img_ptr = NULL;
         mask = 0;
         
         /* IHM will be triggered from external events */
-        events = this->signal_wait(EVENT_TOUCH_ALL,osWaitForever);
+        events = this->signal_wait(0,osWaitForever);
         /* reset the waited signals */
         this->signal_clr((events.value.signals));
 
@@ -89,7 +98,7 @@ void watch_ihm::ihm_manager(void) {
         
         if(mask != 0) {
             /* execute menu application function */
-            menu_ret = current_menu->menu_execute_callback(&mask);                     
+            menu_ret = current_menu->menu_execute_callback(mask);
             
     
             /* handle the response of custom menu function */
@@ -104,30 +113,40 @@ void watch_ihm::ihm_manager(void) {
             
                 case MENU_GO_TO_CHILD:
                     if(app_drawn == false ){
-                        current_menu = current_menu->menu_get_child();
-                        
-                        current_menu->menu_get_image(img_ptr, &size);
-                        /* select drawing type */
-                        if(img_ptr != NULL) {
-                            this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
-                        } else {
-                            this->FillScreen(COLOR_BLACK);
-                        } 
+
+                    	if(current_menu->menu_get_child() != NULL) {
+                            current_menu = current_menu->menu_get_child();
+
+                            img_ptr = current_menu->menu_get_image(&size);
+                            /* select drawing type */
+                            if(img_ptr != NULL) {
+                                this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
+                            } else {
+                                this->FillScreen(COLOR_BLACK);
+                            }
+
+                    	}
+
+                    	/* if has no more events, just ignore key */
+
                     }   
                 break;
                 
                 case MENU_GO_TO_PARENT:
                     if(app_drawn == false) {
-                        current_menu = current_menu->menu_get_parent();
-                        
-                        current_menu->menu_get_image(img_ptr, &size);
-                        /* select drawing type */
-                        if(img_ptr != NULL) {
-                            this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
-                        } else {
-                            this->FillScreen(COLOR_BLACK);
-                        } 
-    
+
+                    	if(current_menu->menu_get_parent() != NULL) {
+                            current_menu = current_menu->menu_get_parent();
+
+                            img_ptr = current_menu->menu_get_image(&size);
+                            /* select drawing type */
+                            if(img_ptr != NULL) {
+                                this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
+                            } else {
+                                this->FillScreen(COLOR_BLACK);
+                            }
+                    	}
+                    	/* just ignore key */
                     }                
                 break;
                 
@@ -135,7 +154,7 @@ void watch_ihm::ihm_manager(void) {
                     if(menu_drawn == false) {
                         app_drawn = false;
                         
-                        current_menu->menu_get_image(img_ptr, &size);
+                        img_ptr = current_menu->menu_get_image(&size);
                         /* select drawing type */
                         if(img_ptr != NULL) {
                             this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
