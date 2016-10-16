@@ -5,6 +5,7 @@
 #include "heart_rate_app.h"
 #include "gym_watch.h"
 #include "I2C.h"
+#include "OpenSans_Font.h"
 
 #define HRM_SLAVE_ADDR ((0x57)<< 1)
 
@@ -139,6 +140,10 @@ void hr_app::hr_app_task(void){
 
 
 	for(;;) {
+
+		int heart_rate = 85;
+		uint8_t text_buffer[2] = {0};
+
 		/* suspends until request */
 		hr_app_thread->signal_wait(1,osWaitForever);
 		hr_menu->state = MENU_IN_APP;
@@ -149,10 +154,13 @@ void hr_app::hr_app_task(void){
 			need_draw = false;
 		}
 
+		sprintf((char *)&text_buffer[0], "%d", heart_rate);
+
+		main_ihm.SetFont(&OpenSans_12x18_Regular[0], COLOR_WHITE);
+		main_ihm.Label((const uint8_t *)&text_buffer[0], 36,30);
 
 
-
-
+		Thread::wait(200);
 
 		event = hr_app_thread->signal_wait(1, 0);
 		if(event.value.signals == 0) {

@@ -120,7 +120,7 @@ void watch_ihm::ihm_manager(void) {
                             img_ptr = current_menu->menu_get_image(&size);
                             /* select drawing type */
                             if(img_ptr != NULL) {
-                                this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
+                                this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_NONE);
                             } else {
                                 this->FillScreen(COLOR_BLACK);
                             }
@@ -141,7 +141,7 @@ void watch_ihm::ihm_manager(void) {
                             img_ptr = current_menu->menu_get_image(&size);
                             /* select drawing type */
                             if(img_ptr != NULL) {
-                                this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
+                                this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_NONE);
                             } else {
                                 this->FillScreen(COLOR_BLACK);
                             }
@@ -157,7 +157,7 @@ void watch_ihm::ihm_manager(void) {
                         img_ptr = current_menu->menu_get_image(&size);
                         /* select drawing type */
                         if(img_ptr != NULL) {
-                            this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_TOP_DOWN);
+                            this->DrawScreen(img_ptr, 0, 0, 96,96, OLED_TRANSITION_NONE);
                         } else {
                             this->FillScreen(COLOR_BLACK);
                         } 

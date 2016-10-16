@@ -8,8 +8,8 @@
 extern const unsigned char exercise_app_image[];
 extern int exercise_size;
 
-extern const unsigned char empty_drawable[];
-extern int empty_size;
+extern const unsigned char empty_with_cntr[];
+extern int empty_cntr_size;
 
 extern watch_ihm main_ihm;
 Thread *current_exercise;
@@ -32,8 +32,12 @@ void gym_exercise::gym_exercise_start(void) {
 	exercise_menu->menu_set_callback(&gym_exercise::exercise_callback);
 	exercise_menu->menu_set_event_mask(EVENT_TOUCH_ALL);
 
+	current_exercise = exercise_app_thread;
+	current_exercise_m = exercise_menu;
+
 	/* starts the exercise application task */
 	exercise_app_thread->start(this, &gym_exercise::exercise_app_task);
+
 }
 
 watch_menu* gym_exercise::gym_exercise_get_menu(void) {
@@ -98,11 +102,12 @@ void gym_exercise::exercise_app_task(void) {
 	for (;;) {
 		/* wait for a ihm running request */
 		exercise_app_thread->signal_wait(1, osWaitForever);
+		exercise_menu->state = MENU_IN_APP;
 
 		if(need_draw != false) {
 			/* needs redraw, refresh screen */
 			need_draw = false;
-			main_ihm.DrawScreen(&empty_drawable[0], 0,0,96,96, OLED_TRANSITION_NONE);
+			main_ihm.DrawScreen(&empty_with_cntr[0], 0,0,96,96, OLED_TRANSITION_NONE);
 		}
 
 
