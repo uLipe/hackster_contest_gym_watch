@@ -9,6 +9,10 @@
 #include "gym_exercise_counter.h"
 #include "gym_pedometer.h"
 
+extern "C" {
+#include "gfx.h"
+}
+
 watch_ihm main_ihm(PTB22,PTB21,PTC13,PTB20,PTE6,PTD15);
 ihm_input main_input(PTE24, PTE25);
 
@@ -40,6 +44,9 @@ DigitalOut boost_en(PTC13, 0x01);
  */
 int main(void) 
 {
+
+	gfxInit();
+
 	main_ihm.DimScreenOFF();
 	main_ihm.FillScreen(COLOR_BLACK);
 

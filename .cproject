@@ -203,6 +203,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/mbed-os/rtos/rtx/TARGET_CORTEX_M}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hackster_contest_gym_watch/ugfx_2.7}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hackster_contest_gym_watch/ugfx_2.7/drivers/gdisp/SSD1351}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.26057600" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MBED_BUILD_TIMESTAMP=1475702714.0"/>
@@ -302,6 +304,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/mbed-os/rtos/rtx/TARGET_CORTEX_M}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hackster_contest_gym_watch/ugfx_2.7}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/hackster_contest_gym_watch/ugfx_2.7/drivers/gdisp/SSD1351}&quot;"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs.1601945676" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.cpp.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MBED_BUILD_TIMESTAMP=1475702714.0"/>
@@ -384,9 +388,14 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry excluding="ugfx_2.7" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="3rdparty/|boards/|demos/|docs/|src/gadc/|src/gaudio/|src/gdisp/|src/gdriver/|src/gevent/|src/gfile/|src/ginput/|src/gmisc/|src/gos/|src/gqueue/|src/gtimer/|src/gtrans/|src/gwin/|src/gfx_compilers.h|src/gfx.c|tools/|.DS_Store|changelog.txt|Doxygenfile|ffconf.h|gfx.h|gfx.mk|gfxconf.example.h|license.html|mf_bwfont.h|mf_rlefont.h|mf_scaledfont.h|pffconf.h|readme.txt|drivers/gadc/|drivers/gaudio/|drivers/gdisp/ED060SC4/|drivers/gdisp/framebuffer/|drivers/gdisp/HX8347D/|drivers/gdisp/ILI9225/|drivers/gdisp/ILI9320/|drivers/gdisp/ILI9325/|drivers/gdisp/ILI9341/|drivers/gdisp/ILI9342/|drivers/gdisp/ILI93xx/|drivers/gdisp/ILI9481/|drivers/gdisp/ILI9488/|drivers/gdisp/LGDP4532/|drivers/gdisp/Nokia6610GE12/|drivers/gdisp/Nokia6610GE8/|drivers/gdisp/PCD8544/|drivers/gdisp/PCF8812/|drivers/gdisp/QImage/|drivers/gdisp/R61505U/|drivers/gdisp/RA8875/|drivers/gdisp/S6D1121/|drivers/gdisp/SPFD54124B/|drivers/gdisp/SSD1289/|drivers/gdisp/SSD1306/|drivers/gdisp/SSD1331/|drivers/gdisp/SSD1848/|drivers/gdisp/SSD1963/|drivers/gdisp/SSD2119/|drivers/gdisp/ST7565/|drivers/gdisp/ST7735/|drivers/gdisp/STM32LTDC/|drivers/gdisp/TestStub/|drivers/gdisp/TLS8204/|drivers/gdisp/.DS_Store|drivers/gdisp/readme.txt|drivers/ginput/|drivers/multiple/|drivers/.DS_Store" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="ugfx_2.7"/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="ilg.gnuarmeclipse.managedbuild.packs"/>
 		</cconfiguration>
 		<cconfiguration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1382253787">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1382253787" moduleId="org.eclipse.cdt.core.settings" name="Release">

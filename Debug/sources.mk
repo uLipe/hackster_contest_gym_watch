@@ -27,6 +27,8 @@ S_UPPER_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+ugfx_2.7/src \
+ugfx_2.7/drivers/gdisp/SSD1351 \
 mbed-os/rtos/rtx/TARGET_CORTEX_M \
 mbed-os/rtos/rtx/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_GCC \
 mbed-os/rtos/rtos \
